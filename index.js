@@ -24,7 +24,7 @@ async function run() {
         const usersCollection = database.collection("usersdata");
 
 
-        // post users
+        // post users data
         app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
@@ -33,13 +33,12 @@ async function run() {
         })
 
 
-        // get users
+        // get users data
         app.get('/users', async (req, res) => {
             const cursor = usersCollection.find({});
             const users = await cursor.toArray();
             res.send(users);
         })
-
     }
 
     finally {
